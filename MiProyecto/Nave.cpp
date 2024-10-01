@@ -4,34 +4,8 @@
 #include <iostream>
 using namespace std;
 
-
-Nave::Nave() : x(40), y(20), vidas(5) {
-	paso=CLOCKS_PER_SEC/30;
-	tempo=clock();
-}
-
-void Nave::start(){
-	textcolor(col);
+Nave::Nave(int posX, int posY, int vida, int color, string objet):Personaje(posX, posY, vida,color, objet) {
 	
-	
-	if(tempo+paso<clock()){
-		borrar();
-		mover();
-		dibujar();
-		tempo=clock();
-	}
-}
-
-void Nave::borrar(){
-	gotoxy(x,y);
-	textcolor(7);
-	cprintf("   ");
-	textcolor(col);
-	
-}
-void Nave::dibujar(){
-	gotoxy(x,y);
-	cprintf("[ ]"); 
 }
 void Nave::mover() {
 	if (kbhit()) {
@@ -39,7 +13,7 @@ void Nave::mover() {
 		
 		switch (tecla) {
 		case 'a':  // izquierda
-			if (x > 1) x--;
+			if (x> 1) x--;
 			break;
 		case 'd':  // derecha
 			if (x < 79) x++;
@@ -54,18 +28,7 @@ void Nave::mover() {
 	}
 }
 
-
-void Nave::disparar(vector<int>& balasX, vector<int>& balasY) {
-	balasX.push_back(x);
-	balasY.push_back(y - 1);
+void Nave::disparar() {
 }
 
-
-
-
-void Nave::perderVida() { vidas--; }
-
-int Nave::VerX() { return x; }
-int Nave::VerY() { return y; }
-int Nave::VerVidas() { return vidas; }
 
