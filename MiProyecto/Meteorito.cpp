@@ -6,7 +6,7 @@ Meteorito::Meteorito(int posX, int posY, int vida, int color, string objet):Pers
 }
 
 void Meteorito::mover() {
-	 y++;
+	y++;
 	
 	if (y > 25) {
 		y = 0; 
