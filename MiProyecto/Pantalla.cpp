@@ -33,15 +33,21 @@ void Pantalla::VerPantalla() {
 }
 void Pantalla::VerVidasYPuntos() {
 	textcolor(BLUE);
-	gotoxy(10+27+3, 6);
+	
+	gotoxy(10 + 27 + 3, 6);
 	cout << "Puntos: " << puntos;
 	
-	gotoxy(10+27+3, 6 + 1);
+	
+	gotoxy(10 + 27 + 3, 7);
+	cout << "                          ";
+	gotoxy(10 + 27 + 3, 7);
 	cout << "Vidas: ";
-	for (int i = 0; i <nave->VerVidas(); i++) {
+	
+	for (int i = 0; i < nave->VerVidas(); i++) {
 		cout << " * ";
 	}
-	cout << "( "<<nave->VerVidas()<<" )";
 	
+	cout << "( " << nave->VerVidas() << " )   ";
 }
+
 

@@ -22,16 +22,33 @@ public:
 		VerPantalla();
 		nave->actualizar();
 		meteorito->actualizar();
-		if (meteorito->VerY() == 17) {
+		
+		// Verificar colisión
+		if (hayColision(nave, meteorito)) {
+			nave->perderVida();
+			
+			meteorito->borrar();
+			delete meteorito;
+			int randomX = rand() % (34 - 11 + 1) + 11;
+			meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+			
+		}
+		
+		//Destrulle si llega al borde
+		if (meteorito->VerY() >= 18) {
 			meteorito->borrar();
 			delete meteorito;
 			int randomX = rand() % (34 - 11 + 1) + 11;
 			meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
 		}
+		
 		VerVidasYPuntos();
 		
 		// Incrementar puntos (por ejemplo, por cada ciclo de juego)
 		puntos++;
+	}
+	bool hayColision(Personaje* nave, Personaje* meteorito) {
+		return (nave->VerX() == meteorito->VerX() && nave->VerY() == meteorito->VerY());
 	}
 
 };
