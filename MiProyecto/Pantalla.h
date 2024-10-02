@@ -47,9 +47,7 @@ public:
 		// Incrementar puntos (por ejemplo, por cada ciclo de juego)
 		puntos++;
 	}
-	bool hayColision(Personaje* nave, Personaje* meteorito) {
-		return (nave->VerX() == meteorito->VerX() && nave->VerY() == meteorito->VerY());
-	}
+	bool hayColision(Personaje* obejto1, Personaje* objeto2);
 
 };
 

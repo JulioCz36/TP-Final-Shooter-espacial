@@ -8,13 +8,29 @@
 
 class Juego {
 	Pantalla pantalla;
+	bool jugando = false;
 public:
 	Juego();
-	void jugar(){
-		while(true){
-			pantalla.actualizar();
+	void jugar() {
+		mostrarMenu();
+		while (true) {
+			if (kbhit()) {
+				int tecla = getch();
+				switch (tecla) {
+				case 'p':
+					jugando = true;
+					clrscr();
+					while (jugando) {
+						pantalla.actualizar();
+					}
+					break;
+				case 27:					
+					return ; 
+				}
+			}
 		}
 	}
+	void mostrarMenu();
 
 };
 

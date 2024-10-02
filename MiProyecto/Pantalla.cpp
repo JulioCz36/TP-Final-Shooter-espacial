@@ -1,5 +1,6 @@
 #include "Pantalla.h"
 #include "Nave.h"
+#include "Personaje.h"
 
 Pantalla::Pantalla(int tamano):tamanoPantalla(tamano), puntos(0)  {
 	nave = new Nave(23, 11, 5, RED, "[ ]", 30);
@@ -7,6 +8,11 @@ Pantalla::Pantalla(int tamano):tamanoPantalla(tamano), puntos(0)  {
 		meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
 
 }
+
+bool Pantalla::hayColision(Personaje* obejto1, Personaje* objeto2) {
+	return (obejto1->VerX() == objeto2->VerX() && obejto1->VerY() == objeto2->VerY());
+}
+
 void Pantalla::VerHeader() {
 	textcolor(BLUE);
 	gotoxy(1, 1);
