@@ -8,6 +8,7 @@ class Juego {
 	bool jugando = false;
 public:
 	Juego();
+	~Juego();
 	void jugar();
 	void mostrarMenu();
 };

@@ -22,9 +22,7 @@ void Personaje::dibujar(){
 }
 void Personaje::borrar(){
 	gotoxy(x,y);
-	textcolor(7);
-	cprintf("   ");
-	textcolor(col);
+	cout<<"   ";
 }
 
 void Personaje::actualizar(){

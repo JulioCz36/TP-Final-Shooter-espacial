@@ -1,12 +1,25 @@
 #include "Pantalla.h"
 #include "Nave.h"
 #include "Personaje.h"
+#include "Enemigo.h"
 
 Pantalla::Pantalla(int tamano, int pun): Estado(tamano,pun){
 	nave = new Nave(23, 11, 5, RED, "[ ]", 30);
 	int randomX = rand() % (34 - 11 + 1) + 11;
-	meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+	meteorito = new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+	
+	// Generar posición inicial del enemigo
+	if (rand() % 2 == 0) {
+		posY = rand() % (18 - 5 + 1) + 5;
+		enemigo1 = new Enemigo(12, posY, 1, RED, "X", 6);
+	} else {
+		posY = rand() % (18 - 5 + 1) + 5;
+		enemigo1 = new Enemigo(36, posY, 1, RED, "X", 6);
+	}
 
+}
+Pantalla::~Pantalla(){
+	delete nave, meteorito;
 }
 
 void Pantalla::actualizar() {
@@ -14,6 +27,7 @@ void Pantalla::actualizar() {
 	VerHeader();
 	VerPantalla();
 	nave->actualizar();
+	enemigo1->actualizar();
 	meteorito->actualizar();
 	
 	// Verificar colisión
@@ -27,7 +41,7 @@ void Pantalla::actualizar() {
 		
 	}
 	
-	//Destrulle si llega al borde
+	
 	if (meteorito->VerY() >= 18) {
 		meteorito->borrar();
 		delete meteorito;
@@ -35,11 +49,26 @@ void Pantalla::actualizar() {
 		meteorito = new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
 	}
 	
+	if ((enemigo1->VerX() == 11 && enemigo1->VerY() == posY) || 
+		(enemigo1->VerX() == 37 && enemigo1->VerY() == posY)) {
+		enemigo1->borrar(); 
+		delete enemigo1; 
+		
+		if (rand() % 2 == 0) {
+			posY = rand() % (18 - 5 + 1) + 5;
+			enemigo1 = new Enemigo(12, posY, 1, RED, "X", 6);
+		} else {
+			posY = rand() % (18 - 5 + 1) + 5;
+			enemigo1 = new Enemigo(36, posY, 1, RED, "X", 6);
+		}
+	}
+	
 	VerVidasYPuntos();
 	
 	// Incrementar puntos (por ejemplo, por cada ciclo de juego)
 	puntos++;
 }
+
 
 bool Pantalla::hayColision(Personaje* obejto1, Personaje* objeto2) {
 	return (obejto1->VerX() == objeto2->VerX() && obejto1->VerY() == objeto2->VerY());

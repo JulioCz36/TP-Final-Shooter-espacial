@@ -8,8 +8,11 @@
 class Pantalla:public Estado {
 	Personaje* nave;
 	Personaje* meteorito;
+	Personaje* enemigo1;
+	int posY;
 public:
 	Pantalla(int tamano, int pun);
+	~Pantalla();
 	
 	void VerHeader();
 	void VerPantalla();
@@ -17,7 +20,7 @@ public:
 	
 	bool TerminoPartida() override;
 	
-	void actualizar() override;	
+	void actualizar() override;
 	bool hayColision(Personaje* obejto1, Personaje* objeto2);
 
 };

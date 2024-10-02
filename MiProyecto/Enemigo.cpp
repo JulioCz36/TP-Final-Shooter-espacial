@@ -2,14 +2,15 @@
 #include "Personaje.h"
 
 Enemigo::Enemigo(int posX, int posY, int vida, int color, string objet, int velocidad):Personaje(posX, posY, vida,color, objet, velocidad){
-	
-}
-void Enemigo::mover() {
-	x++;
-	if (x > 25) {
-		x = 0; 
-		y = rand() % 79 + 1;
+	if (posX == 12) {
+		direccion = 1;  // Va a la derecha
+	} else if (posX == 36) {
+		direccion = -1; // Va a la izquierda
 	}
 }
+void Enemigo::mover() {
+	x += direccion;
+}
+
 
 

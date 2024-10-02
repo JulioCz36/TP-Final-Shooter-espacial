@@ -4,9 +4,11 @@
 
 Juego::Juego(){
 	pantalla = new Pantalla(80,0);
-	//enemigo = new Meteorito(30, 10, 1, RED, "0");
 }
 
+Juego::~Juego(){
+	delete pantalla;
+}
 void Juego::jugar() {
 	mostrarMenu();
 	while (true) {
