@@ -9,11 +9,11 @@
 using namespace std;
 
 class Nave: public Personaje {
-	
+	bool disparoActual;
 public:
 	Nave(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
-	void disparar();
+	bool disparar();
 	void mover() override;
 };
 

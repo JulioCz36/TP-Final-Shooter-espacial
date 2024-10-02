@@ -20,6 +20,7 @@ public:
 	Personaje(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	virtual void mover()=0;
+	virtual bool disparar() = 0;
 	void perderVida();
 	
 	void dibujar();
@@ -30,9 +31,6 @@ public:
 	int VerX();
 	int VerY();
 	int VerVidas();
-	int cambiarColor(int color);
-	
-
 };
 
 #endif

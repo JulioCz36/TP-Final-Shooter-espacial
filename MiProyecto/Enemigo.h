@@ -8,7 +8,9 @@ public:
 	Enemigo(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	void mover() override;
+	bool disparar()override;
 };
+
 
 #endif
 

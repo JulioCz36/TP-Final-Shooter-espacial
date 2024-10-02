@@ -5,11 +5,12 @@
 using namespace std;
 
 Nave::Nave(int posX, int posY, int vida, int color, string objet, int velocidad):Personaje(posX, posY, vida,color, objet, velocidad) {
-	
+	disparoActual = false;
 }
 void Nave::mover() {
 	if (kbhit()) {
 		int tecla = getch();
+		disparoActual = false;
 		
 		switch (tecla) {
 		case 'a':  // izquierda
@@ -24,15 +25,16 @@ void Nave::mover() {
 		case 's':  // abajo
 			if (y < 17) y++;
 			break;
-		case 'l':
-			disparar();
+		case 32:
+			disparoActual = true;
 			break;
 		}
 	}
 }
 
-void Nave::disparar() {
-	this->cambiarColor(WHITE);
+bool Nave::disparar() {
+	textcolor(WHITE);
+	return disparoActual;
 }
 
 

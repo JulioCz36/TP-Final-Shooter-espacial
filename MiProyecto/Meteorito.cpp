@@ -8,4 +8,5 @@ Meteorito::Meteorito(int posX, int posY, int vida, int color, string objet, int 
 void Meteorito::mover() {
 	y++;
 }
+bool Meteorito::disparar() {}
 

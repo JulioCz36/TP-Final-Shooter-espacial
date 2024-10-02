@@ -35,11 +35,10 @@ void Personaje::actualizar(){
 	}
 }
 	
-//Metodos para tener más info
+
 int Personaje::VerX(){ return x; };
 int Personaje::VerY(){ return y; };
 int Personaje::VerVidas(){ return vidas; };
-int Personaje::cambiarColor(int color){ col = color; };
 
 
 

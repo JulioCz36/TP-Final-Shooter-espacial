@@ -12,6 +12,7 @@ class Pantalla:public Estado {
 	Personaje* enemigo1;
 	Personaje* enemigo2;
 	Personaje* enemigo3;
+	vector<string>mensajes;
 public:
 	Pantalla(int tamano, int pun);
 	~Pantalla();
@@ -25,6 +26,7 @@ public:
 	void actualizar() override;
 	Personaje* GenerarEnemigos(int color, int velocidad);
 	Personaje* GenerarMetioritos();
+	void mensaje();
 	bool hayColision(Personaje* obejto1, Personaje* objeto2);
 
 };
