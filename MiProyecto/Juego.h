@@ -4,18 +4,15 @@
 #include "Nave.h"
 #include "Meteorito.h"
 #include "Enemigo.h"
+#include "Pantalla.h"
 
 class Juego {
-	Personaje *nave;
-	Personaje *enemigo;
-	Personaje *meteorito;
+	Pantalla pantalla;
 public:
 	Juego();
 	void jugar(){
 		while(true){
-		nave->actualizar();
-		meteorito->actualizar();
-		enemigo->actualizar();
+			pantalla.actualizar();
 		}
 	}
 

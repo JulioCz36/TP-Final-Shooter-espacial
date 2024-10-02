@@ -24,11 +24,15 @@ void Nave::mover() {
 		case 's':  // abajo
 			if (y < 25) y++;
 			break;
+		case 'l':
+			disparar();
+			break;
 		}
 	}
 }
 
 void Nave::disparar() {
+	this->cambiarColor(WHITE);
 }
 
 

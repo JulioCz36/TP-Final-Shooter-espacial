@@ -30,6 +30,7 @@ public:
 	int VerX();
 	int VerY();
 	int VerVidas();
+	int cambiarColor(int color);
 	
 
 };
