@@ -2,8 +2,8 @@
 #include <ctime>
 using namespace std;
 
-Personaje::Personaje(int posX, int posY, int vida, int color, string objet) {
-	paso=CLOCKS_PER_SEC/30;
+Personaje::Personaje(int posX, int posY, int vida, int color, string objet, int velocidad) {
+	paso=CLOCKS_PER_SEC/velocidad;
 	tempo=clock();
 	x = posX;
 	y = posY;

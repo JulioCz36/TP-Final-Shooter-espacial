@@ -17,7 +17,7 @@ protected:
 	int x, y;
 	
 public:
-	Personaje(int posX, int posY, int vida, int color, string objet);
+	Personaje(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	virtual void mover()=0;
 	void perderVida();

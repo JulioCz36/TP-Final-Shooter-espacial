@@ -4,7 +4,7 @@
 
 class Enemigo: public Personaje {
 public:
-	Enemigo(int posX, int posY, int vida, int color, string objet);
+	Enemigo(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	void mover() override;
 };

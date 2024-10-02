@@ -11,7 +11,7 @@ using namespace std;
 class Nave: public Personaje {
 	
 public:
-	Nave(int posX, int posY, int vida, int color, string objet);
+	Nave(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	void disparar();
 	void mover() override;

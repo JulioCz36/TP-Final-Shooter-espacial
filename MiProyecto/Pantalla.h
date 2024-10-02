@@ -2,51 +2,32 @@
 #define PANTALLA_H
 #include "Nave.h"
 #include "Personaje.h"
+#include "Meteorito.h"
 
 class Pantalla {
 	Personaje* nave;
+	Personaje* meteorito;
 	int puntos;                     
 	int tamanoPantalla;
 public:
 	Pantalla(int tamano);
 	
-	void VerHeader() {
-		textcolor(BLUE);
-		gotoxy(1, 1);
-		cout << "Teclas Movimiento: A,D,W,S";
-		gotoxy(1, 2);
-		cout << "Disparar: L";
-		gotoxy(1, 3);
-		cout << "Debes disparar a las X, Evita los meteoritos!";
-	}
-	void VerPantalla() {
-		textcolor(WHITE);
-		for (int i = 0; i <= 27; i++) {
-			gotoxy(10 + i, 5);  // Borde superior
-			cout << "#";
-			gotoxy(10 + i, 18);  // Borde inferior
-			cout << "#";
-		}
-		for (int i = 0; i <= 11; i++) {
-			gotoxy(10, 6 + i);  // Borde izquierdo
-			cout << "#";
-			gotoxy(10 + 27, 6 + i);  // Borde derecho
-			cout << "#";
-		}
-	}
-	void VerVidasYPuntos() {
-		textcolor(BLUE);
-		gotoxy(10+27+3, 6 );
-		cout << "Vidas: " << nave->VerVidas();
-		
-		gotoxy(10+27+3, 6 + 1);
-		cout << "Puntos: " << puntos;
-	}
+	void VerHeader();
+	void VerPantalla();
+	void VerVidasYPuntos();
+	
 	void actualizar() {
 		// Mostrar interfaz
 		VerHeader();
 		VerPantalla();
 		nave->actualizar();
+		meteorito->actualizar();
+		if (meteorito->VerY() == 17) {
+			meteorito->borrar();
+			delete meteorito;
+			int randomX = rand() % (34 - 11 + 1) + 11;
+			meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+		}
 		VerVidasYPuntos();
 		
 		// Incrementar puntos (por ejemplo, por cada ciclo de juego)

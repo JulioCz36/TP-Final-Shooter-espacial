@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-Nave::Nave(int posX, int posY, int vida, int color, string objet):Personaje(posX, posY, vida,color, objet) {
+Nave::Nave(int posX, int posY, int vida, int color, string objet, int velocidad):Personaje(posX, posY, vida,color, objet, velocidad) {
 	
 }
 void Nave::mover() {
@@ -13,16 +13,16 @@ void Nave::mover() {
 		
 		switch (tecla) {
 		case 'a':  // izquierda
-			if (x> 1) x--;
+			if (x> 11) x--;
 			break;
 		case 'd':  // derecha
-			if (x < 79) x++;
+			if (x < 34) x++;
 			break;
 		case 'w':  // arriba
-			if (y > 1) y--;
+			if (y > 6) y--;
 			break;
 		case 's':  // abajo
-			if (y < 25) y++;
+			if (y < 17) y++;
 			break;
 		case 'l':
 			disparar();

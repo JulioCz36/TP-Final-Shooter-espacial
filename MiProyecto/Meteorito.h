@@ -8,7 +8,7 @@ using namespace std;
 
 class Meteorito: public Personaje {
 public:
-	Meteorito(int posX, int posY, int vida, int color, string objet);
+	Meteorito(int posX, int posY, int vida, int color, string objet, int velocidad);
 	
 	void mover() override;
 };
