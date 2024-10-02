@@ -2,15 +2,55 @@
 #include "Nave.h"
 #include "Personaje.h"
 
-Pantalla::Pantalla(int tamano):tamanoPantalla(tamano), puntos(0)  {
+Pantalla::Pantalla(int tamano, int pun): Estado(tamano,pun){
 	nave = new Nave(23, 11, 5, RED, "[ ]", 30);
+	int randomX = rand() % (34 - 11 + 1) + 11;
+	meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+
+}
+
+void Pantalla::actualizar() {
+	// Mostrar interfaz
+	VerHeader();
+	VerPantalla();
+	nave->actualizar();
+	meteorito->actualizar();
+	
+	// Verificar colisión
+	if (hayColision(nave, meteorito)) {
+		nave->perderVida();
+		
+		meteorito->borrar();
+		delete meteorito;
 		int randomX = rand() % (34 - 11 + 1) + 11;
 		meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
-
+		
+	}
+	
+	//Destrulle si llega al borde
+	if (meteorito->VerY() >= 18) {
+		meteorito->borrar();
+		delete meteorito;
+		int randomX = rand() % (34 - 11 + 1) + 11;
+		meteorito = new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+	}
+	
+	VerVidasYPuntos();
+	
+	// Incrementar puntos (por ejemplo, por cada ciclo de juego)
+	puntos++;
 }
 
 bool Pantalla::hayColision(Personaje* obejto1, Personaje* objeto2) {
 	return (obejto1->VerX() == objeto2->VerX() && obejto1->VerY() == objeto2->VerY());
+}
+
+bool Pantalla::TerminoPartida() { 
+	if(nave->VerVidas()==0){
+		delete nave;
+		return true;
+	}
+	return false; 
 }
 
 void Pantalla::VerHeader() {
@@ -22,6 +62,7 @@ void Pantalla::VerHeader() {
 	gotoxy(1, 3);
 	cout << "Debes disparar a las X, Evita los meteoritos!";
 }
+
 void Pantalla::VerPantalla() {
 	textcolor(WHITE);
 	for (int i = 0; i <= 27; i++) {
@@ -37,6 +78,7 @@ void Pantalla::VerPantalla() {
 		cout << "#";
 	}
 }
+
 void Pantalla::VerVidasYPuntos() {
 	textcolor(BLUE);
 	
