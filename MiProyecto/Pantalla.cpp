@@ -5,21 +5,17 @@
 
 Pantalla::Pantalla(int tamano, int pun): Estado(tamano,pun){
 	nave = new Nave(23, 11, 5, RED, "[ ]", 30);
-	int randomX = rand() % (34 - 11 + 1) + 11;
-	meteorito = new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
 	
-	// Generar posición inicial del enemigo
-	if (rand() % 2 == 0) {
-		posY = rand() % (18 - 5 + 1) + 5;
-		enemigo1 = new Enemigo(12, posY, 1, RED, "X", 6);
-	} else {
-		posY = rand() % (18 - 5 + 1) + 5;
-		enemigo1 = new Enemigo(36, posY, 1, RED, "X", 6);
-	}
+	meteorito = GenerarMetioritos();
+
+	enemigo1 = GenerarEnemigos(CYAN,6);
+	enemigo2 = GenerarEnemigos(GREEN,8);
+	enemigo3 = GenerarEnemigos(MAGENTA,10);
 
 }
 Pantalla::~Pantalla(){
 	delete nave, meteorito;
+	delete enemigo1,enemigo2, enemigo3;
 }
 
 void Pantalla::actualizar() {
@@ -28,6 +24,8 @@ void Pantalla::actualizar() {
 	VerPantalla();
 	nave->actualizar();
 	enemigo1->actualizar();
+	enemigo2->actualizar();
+	enemigo3->actualizar();
 	meteorito->actualizar();
 	
 	// Verificar colisión
@@ -36,37 +34,50 @@ void Pantalla::actualizar() {
 		
 		meteorito->borrar();
 		delete meteorito;
-		int randomX = rand() % (34 - 11 + 1) + 11;
-		meteorito=new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+		meteorito = GenerarMetioritos();
 		
 	}
-	
 	
 	if (meteorito->VerY() >= 18) {
 		meteorito->borrar();
 		delete meteorito;
-		int randomX = rand() % (34 - 11 + 1) + 11;
-		meteorito = new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
+		meteorito = GenerarMetioritos();
 	}
 	
-	if ((enemigo1->VerX() == 11 && enemigo1->VerY() == posY) || 
-		(enemigo1->VerX() == 37 && enemigo1->VerY() == posY)) {
+	if ((enemigo1->VerX() == 11) || (enemigo1->VerX() == 37)) {
 		enemigo1->borrar(); 
 		delete enemigo1; 
-		
-		if (rand() % 2 == 0) {
-			posY = rand() % (18 - 5 + 1) + 5;
-			enemigo1 = new Enemigo(12, posY, 1, RED, "X", 6);
-		} else {
-			posY = rand() % (18 - 5 + 1) + 5;
-			enemigo1 = new Enemigo(36, posY, 1, RED, "X", 6);
-		}
+		enemigo1 = GenerarEnemigos(CYAN,6);
+	}
+	if ((enemigo2->VerX() == 11) || (enemigo2->VerX() == 37)) {
+		enemigo2->borrar(); 
+		delete enemigo2; 
+		enemigo2 = GenerarEnemigos(GREEN,8);
+	}
+	if ((enemigo3->VerX() == 11) || (enemigo3->VerX() == 37)) {
+		enemigo3->borrar(); 
+		delete enemigo3; 
+		enemigo3 = GenerarEnemigos(MAGENTA,10);
 	}
 	
 	VerVidasYPuntos();
 	
 	// Incrementar puntos (por ejemplo, por cada ciclo de juego)
 	puntos++;
+}
+
+Personaje* Pantalla::GenerarEnemigos(int color, int velocidad){
+	if (rand() % 2 == 0) {
+		int posY = rand() % (18 - 5 + 1) + 5;
+		return new Enemigo(12, posY, 1, color, "X", velocidad);
+	} else {
+		int posY = rand() % (18 - 5 + 1) + 5;
+		return new Enemigo(36, posY, 1, color, "X", velocidad);
+	}
+}
+Personaje* Pantalla::GenerarMetioritos(){
+	int randomX = rand() % (34 - 11 + 1) + 11;
+	return new Meteorito(randomX, 7, 1, YELLOW, "0", 6);
 }
 
 
