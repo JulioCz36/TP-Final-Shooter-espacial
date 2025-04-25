@@ -31,7 +31,6 @@ El jugador controla una nave con 5 vidas. Cada impacto de un meteorito reduce un
 - Programación **orientada a objetos**
 
 ## 👨‍💻 Autor
-JulioCZ
-1° Cuatrimestre – Año 2024
-Tecnicatura en Diseño y Programación de Videojuegos
-
+- **JulioCZ**  
+- 1° Cuatrimestre – Año 2024
+- Tecnicatura en Diseño y Programación de Videojuegos
