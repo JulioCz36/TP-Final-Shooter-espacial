@@ -1,36 +1,35 @@
-# 🚀 Shooter Espacial 
+# 🚀 Space Shooter – Final Project for Intro to Programming
 
-Primer proyecto desarrollado en la Tecnicatura de la materia de Intro a la Programación.  
-Un shooter espacial hecho completamente en C++ con renderizado en terminal.
+First project developed in the Technical Degree course Introduction to Programming.
+A space shooter made entirely in C++ with terminal rendering.
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Disparar a los enemigos que cruzan horizontalmente la pantalla y esquivar meteoritos que caen verticalmente.  
-El jugador controla una nave con 5 vidas. Cada impacto de un meteorito reduce una vida. Al perderlas todas, el juego termina.
+Shoot enemies crossing the screen horizontally and dodge meteorites falling vertically.
+The player controls a ship with 5 lives. Each hit by a meteorite reduces one life. The game ends when all lives are lost.
 
-## 🕹️ Jugabilidad
+## 🕹️ Gameplay
 
-- **Nave del jugador**:
-  - Movimiento en las 4 direcciones (WASD o flechas)
-  - Puede disparar proyectiles para eliminar enemigos
+- **Player’s ship**:
+  - Moves in 4 directions (WASD or arrow keys)
+  - Can shoot projectiles to eliminate enemies
 
-- **Enemigos**:
-  - Se desplazan horizontalmente
-  - Aparecen desde los bordes a distintas velocidades
+- **Enemies**:
+  - Move horizontally
+  - Appear from screen edges at different speeds
 
 - **Meteoritos**:
-  - Caen verticalmente
-  - Si impactan en la nave, restan una vida
+  - Fall vertically
+  - Reduce one life if they hit the ship
 
-- **Sistema de puntuación**:
-  - Ganas puntos al destruir enemigos
-  - Mensajes tipo `"Nice shot!"`, `"Good one!"` al sumar puntos
+- **Scoring system**:
+  - Earn points by destroying enemies
+  - Messages like `"Nice shot!"`, `"Good one!"` when scoring
 
-## 🧠 Diseño del código
+## 🧠 Code design
 
-- Programación **orientada a objetos**
+- Object-oriented programming
 
 ## 👨‍💻 Autor
-- **JulioCZ**  
-- 1° Cuatrimestre – Año 2024
-- Tecnicatura en Diseño y Programación de Videojuegos
+
+**JulioCZ** - Technical Degree in Video Game Design and Programming
